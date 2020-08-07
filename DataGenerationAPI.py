@@ -42,7 +42,7 @@ def generate_dictionary(index_list):
 def get_results(ontology,accession):
     res_file="data/Results"+ontology+".pkl"
     results_list = pd.read_pickle(res_file)
-    print(results_list)
+    # print(results_list)
     results = results_list['results']
     # print(results)
     try:
@@ -96,11 +96,10 @@ def analyze_accession_status(accession_number,ontology):
     try:
         df1 = pd.read_pickle(accession_status_file_path)
         accession_object = df1.loc[accession_number]
-        print("Status of Accession No in following Ontologies 1 denote aceesion no has functionality in following ontology")
-        print(accession_object)
         PAYLOAD = load_train_test_data(accession_object,ontology)
     except:
-        PAYLOAD={"Sorry errorenous data"}
+        PAYLOAD="Sorry errorenous data"
+    print(PAYLOAD)
     return PAYLOAD
     
 
@@ -109,7 +108,7 @@ if __name__=='__main__':
     accession=raw_input("Please enter the accession no \t")
     ontology=raw_input("Please enter the ontology \t")
     message=analyze_accession_status(accession,ontology)
-    print(message)
+    # print(message)
     # return message
     
     
