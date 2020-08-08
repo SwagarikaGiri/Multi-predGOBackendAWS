@@ -98,7 +98,7 @@ def analyze_accession_status(accession_number,ontology):
         accession_object = df1.loc[accession_number]
         PAYLOAD = load_train_test_data(accession_object,ontology)
     except:
-        PAYLOAD="Sorry errorenous data"
+        PAYLOAD="Accession no not Present in our database"
     print(PAYLOAD)
     return PAYLOAD
     
