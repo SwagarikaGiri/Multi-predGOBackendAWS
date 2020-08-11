@@ -63,20 +63,32 @@ def load_train_test_data(accession_object,ontology):
     if(accession_object['status']==True):
         if (ontology == "bp" and ontology_flag):
             prediction_list = get_results('bp',accession_number)
-            RETURN_OBJECT['ot']=prediction_list
+            if(len(prediction_list)!=0):
+                RETURN_OBJECT['ot']=prediction_list
+            else:
+                return "Empty List, Accession no does not have Biological Process Function "
+           
         else:
             if(ontology == "bp"):
-                return "Accession no does not have Biological Function"
+                return "Accession no does not have Biological Process Function"
         if (ontology=="cc" and ontology_flag):
             prediction_list=get_results('cc',accession_number)
-            RETURN_OBJECT['ot']=prediction_list
+            if(len(prediction_list)!=0):
+                 RETURN_OBJECT['ot']=prediction_list
+            else:
+                return "Empty List, Accession no does not have  Cellular Component Function"
+           
         else:
             if(ontology=="cc"):
                 return "Accession no does not have Cellular Component"
         
         if(ontology=="mf" and ontology_flag):
             prediction_list=get_results('mf',accession_number)
-            RETURN_OBJECT['ot']=prediction_list
+            if(len(prediction_list)!=0):
+                 RETURN_OBJECT['ot']=prediction_list
+            else:
+                return "Empty List, Accession no does not have Molecular Function"
+           
         else:
             if(ontology=="mf"):
                 return "Accession no does not have Molecular Function"
